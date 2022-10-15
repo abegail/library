@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#card-container>div {
+    height: 200px;
+    width: 150px;
+    border: 1px solid red;
+}
