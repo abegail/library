@@ -14,11 +14,19 @@
 }
 
 .form-container {
-    border: 1px solid blueviolet;
-    width: clamp(250px, 30%, 400px);
-    background-color: antiquewhite;
+    width: 100%;
+    height: 100%;
+    background-color: #848484b9;
     position: absolute;
+    top: 0;
+}
+
+#bookForm {
+    border: 1px solid pink;
     margin-top: 10vh;
+    width: clamp(250px, 30%, 400px);
+    position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    background-color: white;
 }

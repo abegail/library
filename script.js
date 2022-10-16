@@ -104,3 +104,12 @@ const cancelAddBook = document.getElementById('cancelAddBook');
 cancelAddBook.addEventListener('click', () => {
     formContainer.classList.add('hidden');
 })
+
+formContainer.addEventListener('click', () => {
+    formContainer.classList.add('hidden');
+})
+
+const bookForm = document.getElementById('bookForm');
+bookForm.addEventListener('click', (event) => {
+    event.stopPropagation();
+})
