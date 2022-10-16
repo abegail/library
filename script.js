@@ -14,7 +14,6 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 addBookToLibrary('Yangchen', 'Yee', 300, true);
 addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
-addBookToLibrary('Kyoshi', 'Yee', 400, true)
 console.log(myLibrary);
 
 function listBook() {
@@ -47,14 +46,24 @@ function listBook() {
 
 listBook();
 
-// var bookForm = document.getElementById('bookForm');
-// bookForm.addEventListener('submit', e => {
-//   //  e.preventDefault();
-//     const title = document.getElementById('title').value;
-//     const author = document.getElementById('author').value;
-//     const pages = document.getElementById('pages').value;
-//     const isRead = document.getElementById('isRead').value;
-//     addBookToLibrary(title, author, pages, isRead);
-//     console.log(myLibrary);
-//     listBook();
-// })
+const addBookBtn = document.getElementById('addNewBook');
+
+function addBook() {
+    let title = document.getElementById('title');
+    let author = document.getElementById('author');
+    let pages = document.getElementById('pages');
+    let isRead = document.getElementById('isRead');
+    
+    addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
+
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    isRead.checked = false;
+
+    console.log(myLibrary);
+}
+
+
+
+addBookBtn.addEventListener('click', addBook);
