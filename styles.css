@@ -12,3 +12,13 @@
 .hidden{
     display: none;
 }
+
+.form-container {
+    border: 1px solid blueviolet;
+    width: clamp(250px, 30%, 400px);
+    background-color: antiquewhite;
+    position: absolute;
+    margin-top: 10vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

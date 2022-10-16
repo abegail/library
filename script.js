@@ -99,3 +99,8 @@ const showForm = document.getElementById('showAddBookForm');
 showForm.addEventListener('click', () => {
     formContainer.classList.remove('hidden');
 })
+
+const cancelAddBook = document.getElementById('cancelAddBook');
+cancelAddBook.addEventListener('click', () => {
+    formContainer.classList.add('hidden');
+})
