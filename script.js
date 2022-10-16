@@ -27,6 +27,8 @@ function listBook() {
         const author = document.createElement('div');
         const pages = document.createElement('div');
         const isRead = document.createElement('div');
+        const removeBookBtn = document.createElement('button');
+        removeBookBtn.classList.add('removeBookBtn');
     
         title.textContent = book.title;
         author.textContent = 'by ' + book.author;
@@ -36,17 +38,39 @@ function listBook() {
         } else {
             isRead.textContent = 'Unread';
         }
+        removeBookBtn.textContent = 'Remove Book';
+        removeBookBtn.value = book.title;
     
         card.append(title);
         card.append(author);
         card.append(pages);
         card.append(isRead);
+        card.append(removeBookBtn);
+
+        const removeBtns = document.querySelectorAll('.removeBookBtn');
+
+        removeBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                console.log(button.value);
+                modifiedLibrary = myLibrary.filter(book => book.title != button.value);
+                myLibrary = modifiedLibrary;
+                console.log(myLibrary);
+                removeBookList();
+                listBook();
+            })
+        });
     })
 }
 
-listBook();
+function removeBookList() {
+    let child = cardContainer.lastElementChild;
+    while (child) {
+        cardContainer.removeChild(child);
+        child = cardContainer.lastElementChild;
+    }
+}
 
-const addBookBtn = document.getElementById('addNewBook');
+listBook();
 
 function addBook() {
     let title = document.getElementById('title');
@@ -66,12 +90,8 @@ function addBook() {
     listBook();
 }
 
+const addBookBtn = document.getElementById('addNewBook');
 addBookBtn.addEventListener('click', addBook);
 
-function removeBookList() {
-    let child = cardContainer.lastElementChild;
-    while (child) {
-        cardContainer.removeChild(child);
-        child = cardContainer.lastElementChild;
-    }
-}
+
+
