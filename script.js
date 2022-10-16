@@ -62,8 +62,16 @@ function addBook() {
     isRead.checked = false;
 
     console.log(myLibrary);
+    removeBookList();
+    listBook();
 }
 
-
-
 addBookBtn.addEventListener('click', addBook);
+
+function removeBookList() {
+    let child = cardContainer.lastElementChild;
+    while (child) {
+        cardContainer.removeChild(child);
+        child = cardContainer.lastElementChild;
+    }
+}
