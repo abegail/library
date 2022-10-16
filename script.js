@@ -84,6 +84,7 @@ function addBook() {
     isRead.checked = false;
 
     refreshBookDisplay();
+    formContainer.classList.add('hidden');
 }
 
 const addBookBtn = document.getElementById('addNewBook');
@@ -91,3 +92,10 @@ addBookBtn.addEventListener('click', addBook);
 
 listBook();
 
+// Add functionality to make form appear and disappear
+
+const formContainer = document.querySelector('.form-container');
+const showForm = document.getElementById('showAddBookForm');
+showForm.addEventListener('click', () => {
+    formContainer.classList.remove('hidden');
+})
