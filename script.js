@@ -14,12 +14,9 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 addBookToLibrary('Yangchen', 'Yee', 300, true);
 addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
-console.log(myLibrary);
 
 function listBook() {
-    myLibrary.forEach(book => {
-        console.log(book.title);
-    
+    myLibrary.forEach(book => {    
         const card = document.createElement('div');
         cardContainer.append(card);
     
@@ -51,12 +48,9 @@ function listBook() {
 
         removeBtns.forEach(button => {
             button.addEventListener('click', () => {
-                console.log(button.value);
                 modifiedLibrary = myLibrary.filter(book => book.title != button.value);
                 myLibrary = modifiedLibrary;
-                console.log(myLibrary);
-                removeBookList();
-                listBook();
+                refreshBookDisplay();
             })
         });
     })
@@ -70,7 +64,11 @@ function removeBookList() {
     }
 }
 
-listBook();
+function refreshBookDisplay() {
+    removeBookList();
+    listBook();
+    console.log(myLibrary);
+}
 
 function addBook() {
     let title = document.getElementById('title');
@@ -85,13 +83,11 @@ function addBook() {
     pages.value = '';
     isRead.checked = false;
 
-    console.log(myLibrary);
-    removeBookList();
-    listBook();
+    refreshBookDisplay();
 }
 
 const addBookBtn = document.getElementById('addNewBook');
 addBookBtn.addEventListener('click', addBook);
 
-
+listBook();
 
