@@ -187,9 +187,14 @@ input:hover {
 
 .author,
 .pages,
-.isRead {
+.isRead,
+.empty-library {
     color: #575757;
     font-size: 1.15rem;
+}
+
+.empty-library {
+    padding-top: 10vh;
 }
 
 .isRead {
