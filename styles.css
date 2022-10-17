@@ -230,3 +230,8 @@ input:hover {
     width: 100%;
     max-width: 350px;
 }
+
+.error-message {
+    text-align: center;
+    color: red;
+}

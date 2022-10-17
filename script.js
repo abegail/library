@@ -86,16 +86,30 @@ function addBook() {
     let author = document.getElementById('author');
     let pages = document.getElementById('pages');
     let isRead = document.getElementById('isRead');
-    
-    addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
 
-    title.value = '';
-    author.value = '';
-    pages.value = '';
-    isRead.checked = false;
+    if(title.value === '' || author.value === '' || pages.value === '') {
+        removeErrorMessage();
+        let errorMessage = document.createElement('div');
+        errorMessage.classList.add('error-message');
+        errorMessage.textContent = 'Please fill out all details.';
+        bookForm.prepend(errorMessage);
+    } else {
+        addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
+        formContainer.classList.add('hidden');
+        title.value = '';
+        author.value = '';
+        pages.value = '';
+        isRead.checked = false;
+        refreshBookDisplay();
+        removeErrorMessage();
+    }    
+}
 
-    refreshBookDisplay();
-    formContainer.classList.add('hidden');
+function removeErrorMessage() {
+    const errorMessage = document.querySelector('.error-message');
+    if(bookForm.contains(errorMessage)) {
+        bookForm.removeChild(errorMessage);
+    }
 }
 
 const addBookBtn = document.getElementById('addNewBook');
@@ -114,10 +128,12 @@ showForm.addEventListener('click', () => {
 const cancelAddBook = document.getElementById('cancelAddBook');
 cancelAddBook.addEventListener('click', () => {
     formContainer.classList.add('hidden');
+    removeErrorMessage();
 })
 
 formContainer.addEventListener('click', () => {
     formContainer.classList.add('hidden');
+    removeErrorMessage();
 })
 
 const bookForm = document.getElementById('bookForm');
