@@ -195,6 +195,7 @@ input:hover {
 
 .empty-library {
     padding-top: 10vh;
+    text-align: center;
 }
 
 .isRead {
