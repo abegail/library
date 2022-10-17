@@ -40,6 +40,7 @@ function listBook() {
         pages.textContent = book.pages + ' pages';
         if(book.isRead === true) {
             isRead.textContent = 'Read';
+            card.classList.add('read');
         } else {
             isRead.textContent = 'Unread';
         }

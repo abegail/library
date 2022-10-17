@@ -241,3 +241,7 @@ input:hover {
     text-align: center;
     color: red;
 }
+
+.read {
+    border: 2px solid mediumseagreen;
+}
