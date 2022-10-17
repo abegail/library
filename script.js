@@ -14,10 +14,16 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 addBookToLibrary('Yangchen', 'Yee', 300, true);
 addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
+addBookToLibrary('Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+addBookToLibrary('Yangchen', 'Yee', 300, true);
+addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
+addBookToLibrary('Yangchen', 'Yee', 300, true);
+addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
 
 function listBook() {
     myLibrary.forEach(book => {    
         const card = document.createElement('div');
+        card.classList.add('card');
         cardContainer.append(card);
     
         const title = document.createElement('div');
@@ -25,6 +31,11 @@ function listBook() {
         const pages = document.createElement('div');
         const isRead = document.createElement('div');
         const removeBookBtn = document.createElement('button');
+
+        title.classList.add('title');
+        author.classList.add('author');
+        pages.classList.add('pages');
+        isRead.classList.add('isRead');
         removeBookBtn.classList.add('removeBookBtn');
     
         title.textContent = book.title;
