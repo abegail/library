@@ -16,9 +16,6 @@ function addBookToLibrary(title, author, pages, isRead) {
 // addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
 // addBookToLibrary('Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
 // addBookToLibrary('Yangchen', 'Yee', 300, true);
-// addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
-// addBookToLibrary('Yangchen', 'Yee', 300, true);
-// addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
 
 function listBook() {
     myLibrary.forEach(book => {    
