@@ -1,21 +1,26 @@
 const cardContainer = document.getElementById('card-container');
 let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
+function Book(index, title, author, pages, isRead) {
+    this.index = index,
     this.title = title,
     this.author = author,
     this.pages = pages,
     this.isRead = isRead
 }
 
-function addBookToLibrary(title, author, pages, isRead) {
-    myLibrary.push(new Book(title, author, pages, isRead));
+Book.prototype.toggleRead = function() {
+    this.isRead = !this.isRead;
 }
 
-// addBookToLibrary('Yangchen', 'Yee', 300, true);
-// addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
-// addBookToLibrary('Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
-// addBookToLibrary('Yangchen', 'Yee', 300, true);
+function addBookToLibrary(index, title, author, pages, isRead) {
+    myLibrary.push(new Book(index, title, author, pages, isRead));
+}
+
+addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
+addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
+addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+addBookToLibrary(3, 'Yangchen', 'Yee', 300, true);
 
 function listBook() {
     myLibrary.forEach(book => {    
@@ -27,12 +32,14 @@ function listBook() {
         const author = document.createElement('div');
         const pages = document.createElement('div');
         const isRead = document.createElement('div');
+        const toggle = document.createElement('button');
         const removeBookBtn = document.createElement('button');
 
         title.classList.add('title');
         author.classList.add('author');
         pages.classList.add('pages');
         isRead.classList.add('isRead');
+        toggle.classList.add('toggle');
         removeBookBtn.classList.add('removeBookBtn');
     
         title.textContent = book.title;
@@ -44,6 +51,8 @@ function listBook() {
         } else {
             isRead.textContent = 'Unread';
         }
+        toggle.textContent = 'Toggle Read';
+        toggle.value = book.index;
         removeBookBtn.textContent = 'Remove Book';
         removeBookBtn.value = book.title;
     
@@ -51,10 +60,18 @@ function listBook() {
         card.append(author);
         card.append(pages);
         card.append(isRead);
+        card.append(toggle);
         card.append(removeBookBtn);
+    })
+    const toggleButtons = document.querySelectorAll('.toggle');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                myLibrary[button.value].toggleRead();
+                refreshBookDisplay();
+            })
+        })
 
         const removeBtns = document.querySelectorAll('.removeBookBtn');
-
         removeBtns.forEach(button => {
             button.addEventListener('click', () => {
                 modifiedLibrary = myLibrary.filter(book => book.title != button.value);
@@ -62,7 +79,6 @@ function listBook() {
                 refreshBookDisplay();
             })
         });
-    })
 }
 
 function removeBookList() {
@@ -76,7 +92,7 @@ function removeBookList() {
 function refreshBookDisplay() {
     removeBookList();
     listBook();
-    console.log(myLibrary);
+    // console.log(myLibrary);
 }
 
 function addBook() {
