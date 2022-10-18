@@ -17,10 +17,10 @@ function addBookToLibrary(index, title, author, pages, isRead) {
     myLibrary.push(new Book(index, title, author, pages, isRead));
 }
 
-addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
-addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
-addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
-addBookToLibrary(3, 'Yangchen', 'Yee', 300, true);
+// addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
+// addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
+// addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+// addBookToLibrary(3, 'Yangchen', 'Yee', 300, true);
 
 function listBook() {
     myLibrary.forEach(book => {    
