@@ -96,6 +96,7 @@ function refreshBookDisplay() {
 }
 
 function addBook() {
+    let index = myLibrary.length;
     let title = document.getElementById('title');
     let author = document.getElementById('author');
     let pages = document.getElementById('pages');
@@ -108,7 +109,7 @@ function addBook() {
         errorMessage.textContent = 'Please fill out all details.';
         bookForm.prepend(errorMessage);
     } else {
-        addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
+        addBookToLibrary(index, title.value, author.value, pages.value, isRead.checked);
         formContainer.classList.add('hidden');
         title.value = '';
         author.value = '';
