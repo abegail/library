@@ -32,8 +32,12 @@ function listBook() {
         const author = document.createElement('div');
         const pages = document.createElement('div');
         const isRead = document.createElement('div');
-        const toggle = document.createElement('button');
+        const toggle = document.createElement('input');
+        toggle.setAttribute('type', 'checkbox');
         const removeBookBtn = document.createElement('button');
+
+        const toggleHolder = document.createElement('div');
+        toggleHolder.classList.add('toggle-holder');
 
         title.classList.add('title');
         author.classList.add('author');
@@ -45,11 +49,14 @@ function listBook() {
         title.textContent = book.title;
         author.textContent = 'by ' + book.author;
         pages.textContent = book.pages + ' pages';
+        isRead.textContent = 'I\'ve read this book';
         if(book.isRead === true) {
-            isRead.textContent = 'Read';
+            // isRead.textContent = 'Read';
             card.classList.add('read');
+            toggle.checked = true;
         } else {
-            isRead.textContent = 'Unread';
+            // isRead.textContent = 'Unread';
+            toggle.checked = false;
         }
         toggle.textContent = 'Toggle Read';
         toggle.value = book.index;
@@ -59,26 +66,34 @@ function listBook() {
         card.append(title);
         card.append(author);
         card.append(pages);
-        card.append(isRead);
-        card.append(toggle);
+        card.append(toggleHolder);
+        toggleHolder.append(isRead);
+        toggleHolder.append(toggle);
+        // card.append(isRead);
+        // card.append(toggle);
         card.append(removeBookBtn);
     })
-    const toggleButtons = document.querySelectorAll('.toggle');
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                myLibrary[button.value].toggleRead();
+    const toggleBoxes = document.querySelectorAll('.toggle');
+        toggleBoxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                myLibrary[checkbox.value].toggleRead();
                 refreshBookDisplay();
-            })
-        })
+              
 
-        const removeBtns = document.querySelectorAll('.removeBookBtn');
-        removeBtns.forEach(button => {
-            button.addEventListener('click', () => {
-                modifiedLibrary = myLibrary.filter(book => book.title != button.value);
-                myLibrary = modifiedLibrary;
-                refreshBookDisplay();
-            })
-        });
+        // checkbox.addEventListener('change', () => {
+        //     myLibrary[checkbox.value].toggleRead();
+        //     refreshBookDisplay();
+        })
+    })
+
+    const removeBtns = document.querySelectorAll('.removeBookBtn');
+    removeBtns.forEach(button => {
+        button.addEventListener('click', () => {
+            modifiedLibrary = myLibrary.filter(book => book.title != button.value);
+            myLibrary = modifiedLibrary;
+            refreshBookDisplay();
+        })
+    });
 }
 
 function removeBookList() {

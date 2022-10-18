@@ -198,11 +198,6 @@ input:hover {
     text-align: center;
 }
 
-.isRead {
-    padding-bottom: 8%;
-    flex: 1;
-}
-
 .removeBookBtn {
     width: 85%;
     height: 2.4rem;
@@ -245,3 +240,27 @@ input:hover {
 .read {
     border: 2px solid mediumseagreen;
 }
+
+.toggle {
+    width: 1.5rem;
+}
+
+.toggle-holder {
+    width: 80%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3%;
+    padding-top: 7%;
+    padding-bottom: 3%;
+    flex: 1;
+    /* border: 1px solid rebeccapurple; */
+}
+
+.isRead {
+    padding-bottom: 2.5%;
+}
+
+/* .toggle-holder > * {
+    border: 1px solid rebeccapurple;
+} */
