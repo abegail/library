@@ -183,6 +183,7 @@ input:hover {
     /* padding-top: 10%;
     padding-bottom: 8%; */
     padding: 10% 5% 8% 5%;
+    flex: 1;
 }
 
 .author,
@@ -253,7 +254,7 @@ input:hover {
     gap: 3%;
     padding-top: 7%;
     padding-bottom: 3%;
-    flex: 1;
+    /* flex: 1; */
     /* border: 1px solid rebeccapurple; */
 }
 
