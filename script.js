@@ -8,12 +8,25 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead
 }
 
+Book.prototype.toggleRead = function() {
+    this.isRead = !this.isRead;
+}
+
 function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(new Book(title, author, pages, isRead));
 }
 
-// addBookToLibrary('Yangchen', 'Yee', 300, true);
-// addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
+addBookToLibrary('Yangchen', 'Yee', 300, true);
+console.log(myLibrary[0].isRead);
+myLibrary[0].toggleRead();
+console.log(myLibrary[0].isRead);
+
+console.log('For 2nd book');
+addBookToLibrary('Harry Potter', 'sumbitch', 1000, false);
+console.log(myLibrary[1].isRead);
+myLibrary[1].toggleRead();
+console.log(myLibrary[1].isRead);
+
 // addBookToLibrary('Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
 // addBookToLibrary('Yangchen', 'Yee', 300, true);
 
@@ -27,12 +40,14 @@ function listBook() {
         const author = document.createElement('div');
         const pages = document.createElement('div');
         const isRead = document.createElement('div');
+        const toggle = document.createElement('button');
         const removeBookBtn = document.createElement('button');
 
         title.classList.add('title');
         author.classList.add('author');
         pages.classList.add('pages');
         isRead.classList.add('isRead');
+        toggle.classList.add('toggle');
         removeBookBtn.classList.add('removeBookBtn');
     
         title.textContent = book.title;
@@ -44,6 +59,7 @@ function listBook() {
         } else {
             isRead.textContent = 'Unread';
         }
+        toggle.textContent = 'Toggle read';
         removeBookBtn.textContent = 'Remove Book';
         removeBookBtn.value = book.title;
     
@@ -51,6 +67,7 @@ function listBook() {
         card.append(author);
         card.append(pages);
         card.append(isRead);
+        card.append(toggle);
         card.append(removeBookBtn);
 
         const removeBtns = document.querySelectorAll('.removeBookBtn');
