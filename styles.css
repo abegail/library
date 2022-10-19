@@ -180,8 +180,6 @@ input:hover {
     font-size: 1.8rem;
     font-family: 'League-Spartan-Bold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    /* padding-top: 10%;
-    padding-bottom: 8%; */
     padding: 10% 5% 8% 5%;
     flex: 1;
 }
@@ -215,8 +213,6 @@ input:hover {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
     gap: 5%;
-    /* grid-auto-rows: 250px; */
-    /* margin-top: 5vh; */
     margin-top: calc(100px + 5vh);
 }
 
@@ -254,14 +250,8 @@ input:hover {
     gap: 3%;
     padding-top: 7%;
     padding-bottom: 3%;
-    /* flex: 1; */
-    /* border: 1px solid rebeccapurple; */
 }
 
 .isRead {
     padding-bottom: 2.5%;
 }
-
-/* .toggle-holder > * {
-    border: 1px solid rebeccapurple;
-} */

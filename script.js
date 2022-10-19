@@ -1,5 +1,31 @@
-const cardContainer = document.getElementById('card-container');
 let myLibrary = [];
+
+const cardContainer = document.getElementById('card-container');
+
+const addBookBtn = document.getElementById('addNewBook');
+addBookBtn.addEventListener('click', addBook);
+
+const formContainer = document.querySelector('.form-container');
+const showForm = document.getElementById('showAddBookForm');
+showForm.addEventListener('click', () => {
+    formContainer.classList.remove('hidden');
+})
+
+const cancelAddBook = document.getElementById('cancelAddBook');
+cancelAddBook.addEventListener('click', () => {
+    formContainer.classList.add('hidden');
+    removeErrorMessage();
+})
+
+formContainer.addEventListener('click', () => {
+    formContainer.classList.add('hidden');
+    removeErrorMessage();
+})
+
+const bookForm = document.getElementById('bookForm');
+bookForm.addEventListener('click', (event) => {
+    event.stopPropagation();
+})
 
 function Book(index, title, author, pages, isRead) {
     this.index = index,
@@ -16,11 +42,6 @@ Book.prototype.toggleRead = function() {
 function addBookToLibrary(index, title, author, pages, isRead) {
     myLibrary.push(new Book(index, title, author, pages, isRead));
 }
-
-// addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
-// addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
-// addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
-// addBookToLibrary(3, 'Yangchen', 'Yee', 300, true);
 
 function listBook() {
     myLibrary.forEach(book => {    
@@ -51,11 +72,9 @@ function listBook() {
         pages.textContent = book.pages + ' pages';
         isRead.textContent = 'I\'ve read this book';
         if(book.isRead === true) {
-            // isRead.textContent = 'Read';
             card.classList.add('read');
             toggle.checked = true;
         } else {
-            // isRead.textContent = 'Unread';
             toggle.checked = false;
         }
         toggle.textContent = 'Toggle Read';
@@ -69,8 +88,6 @@ function listBook() {
         card.append(toggleHolder);
         toggleHolder.append(isRead);
         toggleHolder.append(toggle);
-        // card.append(isRead);
-        // card.append(toggle);
         card.append(removeBookBtn);
     })
     const toggleBoxes = document.querySelectorAll('.toggle');
@@ -78,11 +95,6 @@ function listBook() {
             checkbox.addEventListener('change', function() {
                 myLibrary[checkbox.value].toggleRead();
                 refreshBookDisplay();
-              
-
-        // checkbox.addEventListener('change', () => {
-        //     myLibrary[checkbox.value].toggleRead();
-        //     refreshBookDisplay();
         })
     })
 
@@ -96,6 +108,12 @@ function listBook() {
     });
 }
 
+function updateIndex() {
+    for(i = 0; i < myLibrary.length; i++) {
+        myLibrary[i].index = i;
+    }
+}
+
 function removeBookList() {
     let child = cardContainer.lastElementChild;
     while (child) {
@@ -105,9 +123,9 @@ function removeBookList() {
 }
 
 function refreshBookDisplay() {
+    updateIndex();
     removeBookList();
     listBook();
-    // console.log(myLibrary);
 }
 
 function addBook() {
@@ -142,31 +160,9 @@ function removeErrorMessage() {
     }
 }
 
-const addBookBtn = document.getElementById('addNewBook');
-addBookBtn.addEventListener('click', addBook);
+// addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
+// addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
+// addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+// addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
 
 listBook();
-
-// Add functionality to make form appear and disappear
-
-const formContainer = document.querySelector('.form-container');
-const showForm = document.getElementById('showAddBookForm');
-showForm.addEventListener('click', () => {
-    formContainer.classList.remove('hidden');
-})
-
-const cancelAddBook = document.getElementById('cancelAddBook');
-cancelAddBook.addEventListener('click', () => {
-    formContainer.classList.add('hidden');
-    removeErrorMessage();
-})
-
-formContainer.addEventListener('click', () => {
-    formContainer.classList.add('hidden');
-    removeErrorMessage();
-})
-
-const bookForm = document.getElementById('bookForm');
-bookForm.addEventListener('click', (event) => {
-    event.stopPropagation();
-})
