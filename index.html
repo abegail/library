@@ -14,7 +14,7 @@
         <button type="button" id="showAddBookForm">Add New Book</button>
     </div>
     <div class="form-container hidden">
-        <form id="bookForm">
+        <form id="bookForm" class="bookForm">
             <div class="title-container input-container">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" required>
@@ -34,6 +34,17 @@
             <div class="button-container">
                 <button type="button" id="addNewBook">Add Book</button>
                 <button type="button" id="cancelAddBook">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div class="confirm-delete form-container hidden">
+        <form class="bookForm">
+            <div class="title-container input-container confirm-remove-text">
+                Remove book?
+            </div>
+            <div class="button-container">
+                <button type="button" id="confirm-remove">Remove</button>
+                <button type="button" id="cancel-remove">Cancel</button>
             </div>
         </form>
     </div>

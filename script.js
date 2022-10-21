@@ -11,10 +11,25 @@ showForm.addEventListener('click', () => {
     formContainer.classList.remove('hidden');
 })
 
+const confirmDeletePopup = document.querySelector('.confirm-delete');
+const confirmRemove = document.getElementById('confirm-remove');
+confirmRemove.addEventListener('click', deleteBook);
+let titleHolder = '';
+
+const cancelDeleteBtn = document.getElementById('cancel-remove');
+cancelDeleteBtn.addEventListener('click', () => {
+    confirmDeletePopup.classList.add('hidden');
+})
+
 const cancelAddBook = document.getElementById('cancelAddBook');
 cancelAddBook.addEventListener('click', () => {
     formContainer.classList.add('hidden');
     removeErrorMessage();
+})
+
+const confirmDeleteContainer = document.querySelector('.confirm-delete');
+confirmDeleteContainer.addEventListener('click', () => {
+    confirmDeletePopup.classList.add('hidden');
 })
 
 formContainer.addEventListener('click', () => {
@@ -22,10 +37,22 @@ formContainer.addEventListener('click', () => {
     removeErrorMessage();
 })
 
-const bookForm = document.getElementById('bookForm');
-bookForm.addEventListener('click', (event) => {
-    event.stopPropagation();
+const bookForm = document.querySelectorAll('.bookForm');
+bookForm.forEach(form => {
+    form.addEventListener('click', (event) => {
+        event.stopPropagation();
+    })
 })
+
+// bookForm.addEventListener('click', (event) => {
+//     event.stopPropagation();
+// })
+
+// const bookForm = document.getElementById('bookForm');
+
+// bookForm.addEventListener('click', (event) => {
+//     event.stopPropagation();
+// })
 
 function Book(index, title, author, pages, isRead) {
     this.index = index,
@@ -99,13 +126,32 @@ function listBook() {
     })
 
     const removeBtns = document.querySelectorAll('.removeBookBtn');
-    removeBtns.forEach(button => {
-        button.addEventListener('click', () => {
-            modifiedLibrary = myLibrary.filter(book => book.title != button.value);
-            myLibrary = modifiedLibrary;
-            refreshBookDisplay();
-        })
-    });
+    removeBtns.forEach(button => showConfirmDelete(button));
+
+    // removeBtns.forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         modifiedLibrary = myLibrary.filter(book => book.title != button.value);
+    //         myLibrary = modifiedLibrary;
+    //         refreshBookDisplay();
+    //     })
+    // });
+}
+
+function showConfirmDelete(button) {
+    button.addEventListener('click', () => {
+        confirmDeletePopup.classList.remove('hidden');
+        titleHolder = button.value;
+        // modifiedLibrary = myLibrary.filter(book => book.title != button.value);
+        // myLibrary = modifiedLibrary;
+        // refreshBookDisplay();
+    })
+}
+
+function deleteBook() {
+    let modifiedLibrary = myLibrary.filter(book => book.title != titleHolder);
+    myLibrary = modifiedLibrary;
+    confirmDeletePopup.classList.add('hidden');
+    refreshBookDisplay();
 }
 
 function updateIndex() {
@@ -160,9 +206,9 @@ function removeErrorMessage() {
     }
 }
 
-// addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
-// addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
-// addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
-// addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
+addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
+addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
+addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
 
 listBook();

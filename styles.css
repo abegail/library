@@ -41,7 +41,7 @@ body {
     top: 0;
 }
 
-#bookForm {
+.bookForm {
     margin-top: 10vh;
     width: clamp(250px, 30%, 400px);
     position: relative;
@@ -81,13 +81,15 @@ button {
 }
 
 #showAddBookForm,
-#addNewBook {
+#addNewBook,
+#cancel-remove {
     background-color: #357DA7;
     border: 1px solid #357DA7;
 }
 
 #showAddBookForm:hover,
-#addNewBook:hover {
+#addNewBook:hover,
+#cancel-remove:hover {
     background-color: #438eb9;
     border: 1px solid #B3DADE;
 }
@@ -103,13 +105,15 @@ button {
 }
 
 #cancelAddBook,
-.removeBookBtn {
+.removeBookBtn,
+#confirm-remove {
     background-color: #F15560;
     border: 1px solid #F15560;
 }
 
 #cancelAddBook:hover,
-.removeBookBtn:hover {
+.removeBookBtn:hover,
+#confirm-remove:hover {
     background-color: #fe6d77;
     border: 1px solid #ffc1c1;
 }
@@ -120,6 +124,12 @@ label {
     font-weight: bold;
     width: 20%;
     text-align: center;
+}
+
+.confirm-remove-text {
+    font-size: 1.1rem;
+    color: #545454;
+    font-weight: bold;
 }
 
 input {
@@ -137,7 +147,7 @@ input:hover {
     border: 1.1px solid #b6b3b3;
 }
 
-#bookForm button {
+.bookForm button {
     height: 2.2rem;
     width: 40%;
     font-size: 0.9rem;
