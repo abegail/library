@@ -44,16 +44,6 @@ bookForm.forEach(form => {
     })
 })
 
-// bookForm.addEventListener('click', (event) => {
-//     event.stopPropagation();
-// })
-
-// const bookForm = document.getElementById('bookForm');
-
-// bookForm.addEventListener('click', (event) => {
-//     event.stopPropagation();
-// })
-
 function Book(index, title, author, pages, isRead) {
     this.index = index,
     this.title = title,
@@ -127,23 +117,12 @@ function listBook() {
 
     const removeBtns = document.querySelectorAll('.removeBookBtn');
     removeBtns.forEach(button => showConfirmDelete(button));
-
-    // removeBtns.forEach(button => {
-    //     button.addEventListener('click', () => {
-    //         modifiedLibrary = myLibrary.filter(book => book.title != button.value);
-    //         myLibrary = modifiedLibrary;
-    //         refreshBookDisplay();
-    //     })
-    // });
 }
 
 function showConfirmDelete(button) {
     button.addEventListener('click', () => {
         confirmDeletePopup.classList.remove('hidden');
         titleHolder = button.value;
-        // modifiedLibrary = myLibrary.filter(book => book.title != button.value);
-        // myLibrary = modifiedLibrary;
-        // refreshBookDisplay();
     })
 }
 
@@ -206,9 +185,9 @@ function removeErrorMessage() {
     }
 }
 
-addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
-addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
-addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
-addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
+// addBookToLibrary(0, 'Yangchen', 'Yee', 300, false);
+// addBookToLibrary(1, 'Harry Potter', 'sumbitch', 1000, false);
+// addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
+// addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
 
 listBook();
