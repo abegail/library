@@ -37,8 +37,10 @@ formContainer.addEventListener('click', () => {
     removeErrorMessage();
 })
 
-const bookForm = document.querySelectorAll('.bookForm');
-bookForm.forEach(form => {
+const addBookForm = document.getElementById('addBookForm');
+
+const bookForms = document.querySelectorAll('.bookForm');
+bookForms.forEach(form => {
     form.addEventListener('click', (event) => {
         event.stopPropagation();
     })
@@ -161,11 +163,12 @@ function addBook() {
     let isRead = document.getElementById('isRead');
 
     if(title.value === '' || author.value === '' || pages.value === '') {
+        console.log('I was in here!');
         removeErrorMessage();
         let errorMessage = document.createElement('div');
         errorMessage.classList.add('error-message');
         errorMessage.textContent = 'Please fill out all details.';
-        bookForm.prepend(errorMessage);
+        addBookForm.prepend(errorMessage);
     } else {
         addBookToLibrary(index, title.value, author.value, pages.value, isRead.checked);
         formContainer.classList.add('hidden');
@@ -180,8 +183,8 @@ function addBook() {
 
 function removeErrorMessage() {
     const errorMessage = document.querySelector('.error-message');
-    if(bookForm.contains(errorMessage)) {
-        bookForm.removeChild(errorMessage);
+    if(addBookForm.contains(errorMessage)) {
+        addBookForm.removeChild(errorMessage);
     }
 }
 
