@@ -29,10 +29,6 @@ body {
     background-color: #FAFAFA;
 }
 
-.hidden{
-    display: none;
-}
-
 .form-container {
     width: 100%;
     height: 100%;
@@ -264,4 +260,15 @@ input:hover {
 
 .isRead {
     padding-bottom: 2.5%;
+}
+
+#message-container {
+    width: max(60%, 75%);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(100px + 5vh);
+}
+
+.hidden{
+    display: none;
 }

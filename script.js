@@ -162,10 +162,18 @@ function removeBookList() {
     }
 }
 
+const emptyLib = document.getElementById('message-container');
+
 function refreshBookDisplay() {
     updateIndex();
     removeBookList();
-    listBook();
+
+    if(myLibrary.length === 0) {
+        emptyLib.classList.remove('hidden');
+    } else {
+        emptyLib.classList.add('hidden')
+        listBook();
+    }
 }
 
 function addBook() {
@@ -206,4 +214,4 @@ function removeErrorMessage() {
 // addBookToLibrary(2, 'Harry Potter iuwehgiw guh rgiuqhrg qrg uqrhg iqurhg iqerg erg', 'sumbitch i iuqrgh iurg qg', 1000, false);
 // addBookToLibrary(3, 'Kyoshi', 'Yee', 300, true);
 
-listBook();
+refreshBookDisplay();
